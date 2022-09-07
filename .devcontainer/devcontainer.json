@@ -4,6 +4,8 @@
 		"dockerfile": "../Dockerfile",
 		"context": ".."
 	},
+	"forwardPorts": [48081],
+	"containerUser": "1000",
 	"settings": {
 		"python.pythonPath": "/usr/local/bin/python",
 		"python.languageServer": "Pylance",
@@ -39,11 +41,14 @@
 		"ms-python.vscode-pylance",
 	],
 	"mounts": [
-		"source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached,readonly",
-		"source=${localEnv:HOME}/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached,readonly",
+		"source=${localEnv:HOME}/.ssh,target=/home/1000/.ssh,type=bind,consistency=cached,readonly",
+		"source=${localEnv:HOME}/.gitconfig,target=/home/1000/.gitconfig,type=bind,consistency=cached,readonly",
 		"source=projectname-bashhistory,target=/commandhistory,type=volume"
 	],
 	"workspaceFolder": "/code",
 	"workspaceMount": "source=${localWorkspaceFolder},target=/code,type=bind,consistency=cached",
 	"postCreateCommand": "pip install -e .",
+	"runArgs": [
+        "--env-file=.devcontainer/.env"
+    ]
 }

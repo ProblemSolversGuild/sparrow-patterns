@@ -1,6 +1,10 @@
 FROM python:3.9
 
-RUN SNIPPET="export PROMPT_COMMAND='history -a' && export HISTFILE=/commandhistory/.bash_history" && echo $SNIPPET >> "/root/.bashrc"
+ENV USER_ID=1000
+
+RUN useradd -m -d "/home/${USER_ID}" "${USER_ID}"
+
+RUN SNIPPET="export PROMPT_COMMAND='history -a' && export HISTFILE=/commandhistory/.bash_history" && echo $SNIPPET >> "/home/${USER_ID}/.bashrc"
 
 ENV LANG=C.UTF-8 \
   LC_ALL=C.UTF-8 \
@@ -23,10 +27,12 @@ COPY pyproject.toml poetry.lock* ./
 
 # Allow installing dev dependencies to run tests
 ARG INSTALL_DEV=true
+RUN bash -c "poetry lock"
 RUN bash -c "if [ $INSTALL_DEV == 'true' ] ; then poetry install --no-root ; else poetry install --no-root --no-dev ; fi"
 
 CMD mkdir -p /code
 WORKDIR /code
+ENV SHELL /bin/bash
 
 ADD . .
 ENTRYPOINT [ "make" ]
