@@ -1,0 +1,6 @@
+website:
+  sidebar:
+    contents:
+      - 01_devcontainer.ipynb
+      - 02_dockerfile.ipynb
+      - 03_github.ipynb
