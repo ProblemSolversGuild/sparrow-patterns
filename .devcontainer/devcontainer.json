@@ -5,7 +5,7 @@
 		"context": ".."
 	},
 	"forwardPorts": [48081],
-	"containerUser": "1000",
+	"containerUser": "kbird",
 	"settings": {
 		"python.pythonPath": "/usr/local/bin/python",
 		"python.languageServer": "Pylance",
@@ -41,8 +41,8 @@
 		"ms-python.vscode-pylance",
 	],
 	"mounts": [
-		"source=${localEnv:HOME}/.ssh,target=/home/1000/.ssh,type=bind,consistency=cached,readonly",
-		"source=${localEnv:HOME}/.gitconfig,target=/home/1000/.gitconfig,type=bind,consistency=cached,readonly",
+		"source=${localEnv:HOME}/.ssh,target=/home/kbird/.ssh,type=bind,consistency=cached,readonly",
+		"source=${localEnv:HOME}/.gitconfig,target=/home/kbird/.gitconfig,type=bind,consistency=cached,readonly",
 		"source=projectname-bashhistory,target=/commandhistory,type=volume"
 	],
 	"workspaceFolder": "/code",
