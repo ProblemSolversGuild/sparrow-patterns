@@ -13,8 +13,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt install -y tzdata
 RUN apt install -y \
     build-essential \
     curl \
-    git{% if deepstream %}
-
+    git
+    
+{% if deepstream %}
 RUN apt install -y \
     python3-gi python3-dev python3-gst-1.0 python-gi-dev git python-dev \
     python3 python3-pip python3.8-dev python3.8-venv cmake g++ build-essential \
@@ -41,7 +42,8 @@ RUN cd deepstream_python_apps/bindings && \
 
 RUN rm /usr/bin/python /usr/local/bin/pip
 RUN ln -s /usr/bin/python3.8 /usr/local/bin/python
-RUN ln -s /usr/local/bin/pip3.8 /usr/local/bin/pip{% elif gpu %} # GPU Setup
+RUN ln -s /usr/local/bin/pip3.8 /usr/local/bin/pip
+{% elif gpu %} # GPU Setup
 RUN apt-get install -y \
     libcairo2-dev \
     libgl1-mesa-glx \
@@ -53,8 +55,12 @@ RUN apt install -y python3.9-dev python3.9-venv
 RUN python3.9 -m ensurepip
 RUN ln -s /usr/bin/python3.9 /usr/local/bin/python
 RUN ln -s /usr/local/bin/pip3.9 /usr/local/bin/pip
-RUN pip install --upgrade pip{% endif %}
+{% endif %}
 
+RUN pip install --upgrade pip
+{% if nbdev %} #add nbdev and jupyter notebook
+RUN pip install jupyter 'nbdev<2'
+{% endif %}
 # Allow root for Jupyter notebooks
 RUN mkdir /root/.jupyter
 RUN echo "c.NotebookApp.allow_root = True" > /root/.jupyter/jupyter_notebook_config.py

@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "github.github.html",
+    "href": "github.github.html",
+    "title": "github",
+    "section": "",
+    "text": "generate_github\n\n generate_github (project_directory:str='.', template_directory:str='.')\n\nWrite a .github directory for the project.\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nproject_directory\nstr\n.\nWhere to create the .github folder.\n\n\ntemplate_directory\nstr\n.\nWhere to get template files from\n\n\nReturns\nNone"
+  },
+  {
+    "objectID": "devcontainer.devcontainer.html",
+    "href": "devcontainer.devcontainer.html",
+    "title": "devcontainer",
+    "section": "",
+    "text": "generate_devcontainer\n\n generate_devcontainer (project_name:str, package:bool=False,\n                        gpu:bool=False, project_directory:str='.',\n                        template_directory:str='.')\n\nWrite a .devcontainer directory for the project.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nproject_name\nstr\n\nThe slug for the project. Should be the same as the GitHub repo.\n\n\npackage\nbool\nFalse\nWhether this is for a Python package\n\n\ngpu\nbool\nFalse\nWhether to make the GPU available\n\n\nproject_directory\nstr\n.\nWhere to create the .devcontainer directory. Defaults to working directory.\n\n\ntemplate_directory\nstr\n.\nWhere the template directory is located. Defaults to working directory.\n\n\nReturns\nNone"
+  },
+  {
+    "objectID": "dockerfile.dockerfile.html",
+    "href": "dockerfile.dockerfile.html",
+    "title": "dockerfile",
+    "section": "",
+    "text": "generate_dockerfile\n\n generate_dockerfile (gpu:bool=False, deepstream:bool=False,\n                      project_directory:str='.',\n                      template_directory:str='.')\n\nWrite a Dockerfile the project.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\ngpu\nbool\nFalse\nWhether to make the GPU available\n\n\ndeepstream\nbool\nFalse\nWhether to set up project for DeepStream\n\n\nproject_directory\nstr\n.\nWhere to create the dockerfile. Defaults to working directory.\n\n\ntemplate_directory\nstr\n.\nWhere to create the .devcontainer folder. Defaults to working directory.\n\n\nReturns\nNone"
+  }
+]

@@ -126,3 +126,7 @@ docs:
 .PHONY: serve-docs
 serve-docs: docs
 	cd docs/build/html && python -m http.server
+
+.PHONY: jupyter
+jupyter: jupyter
+	jupyter notebook --port=48081

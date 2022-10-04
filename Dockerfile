@@ -4,7 +4,7 @@ ENV USER_ID=1000
 ENV USER_NAME=kbird
 ENV USER_PASS=
 
-RUN useradd -m -d "/home/${USER_NAME}" -u "${USER_ID}" -p "${USER_PASS}" "${USER_NAME}"
+RUN useradd -m -d "/home/${USER_NAME}" -u "${USER_ID}" -p "${USER_PASS}" "${USER_NAME}" -G "sudo"
 
 RUN SNIPPET="export PROMPT_COMMAND='history -a' && export HISTFILE=/commandhistory/.bash_history" && echo $SNIPPET >> "/home/${USER_NAME}/.bashrc"
 

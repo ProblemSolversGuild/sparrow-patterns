@@ -22,6 +22,7 @@ def project(
     cli: bool = False,
     gpu: bool = False,
     deepstream: bool = False,
+    nbdev: bool = False,
     parent_directory: str = ".",
 ) -> None:
     """Create a new Python package."""
@@ -39,7 +40,7 @@ def project(
         gpu=gpu,
         project_directory=project_dir_string,
     )
-    dockerfile(gpu=gpu, deepstream=deepstream, project_directory=project_dir_string)
+    dockerfile(gpu=gpu, deepstream=deepstream, nbdev=nbdev, project_directory=project_dir_string)
     gitignore(project_dir_string)
     makefile(project_name, project_directory=project_dir_string)
     poetry(
